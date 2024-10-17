@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-import Center from './components/Center'; // Import the center section
 import Navbar from './components/Navbar'; // Your existing Navbar component
 import axios from 'axios';
 import Footer from './Footer';
+import { useEffect } from 'react';
 
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fetchedData, setFetchedData] = useState(null); 
+
 
   // Handle file selection and ensure only PDF files are allowed
   const handleFileChange = (e) => {
@@ -31,22 +33,45 @@ function App() {
     const formData = new FormData();
     formData.append('pdf', pdfFile);
 
+    if (fetchedData) {
+      formData.append('fetchedData', JSON.stringify(fetchedData)); // Make sure fetchedData is serialized properly
+    }
+    
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post('http://localhost:8000/upload', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'multipart/form-data', // Ensure it's multipart/form-data
         },
       });
       alert('PDF uploaded and embeddings generated successfully.');
     } catch (error) {
       console.error('Error uploading PDF:', error);
-      // Show error message with specific details
+      // Provide specific error details, either from backend or error object
       alert(`Error uploading PDF: ${error.response?.data?.message || error.message}`);
     } finally {
       setLoading(false);
     }
+    
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:5173/api/some-endpoint');
+      setFetchedData(response.data);
+      console.log("Fetched data:", response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error(`Error fetching data: Status ${error.response.status} - ${error.response.data}`);
+      } else if (error.request) {
+        console.error("Error fetching data: No response from server", error.request);
+      } else {
+        console.error("Error setting up request:", error.message);
+      }
+    }
   };
+  
+  useEffect(()=>{
+    fetchData();
+  },[])
 
   // Handle query submission
   const handleQuery = async () => {
@@ -57,7 +82,7 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:5000/query', { query });
+      const response = await axios.post('http://localhost:8000/query', { query });
       setResults(response.data.results);  // Assume backend returns query results
     } catch (error) {
       console.error('Error querying PDF data:', error);
