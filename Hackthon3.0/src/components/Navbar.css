@@ -1,0 +1,70 @@
+/* Navbar Container */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 35px;
+  background-color: #1e1d1d; /* Black background */
+  color: #fff;
+  position: fixed;
+  width: 100vw; /* Full viewport width */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow-x: hidden; /* Ensure no horizontal scrollbar for the navbar */
+}
+
+/* Left Side (Home Link) */
+.navbar-left .nav-link {
+  color: #ff7600; /* Orange color for Home link */
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+/* Center (Brand Logo) */
+.navbar-brand {
+  flex-grow: 1; /* Make the brand section take up full width */
+  text-align: center; /* Center the brand name */
+}
+
+.navbar-brand h1 {
+  font-size: 1.8rem;
+  color: #fff; /* White for brand text */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+/* Right Side (Upload PDF Link) */
+.navbar-right .nav-link {
+  color: #ff7600; /* Orange color for Upload PDF link */
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar-left .nav-link,
+  .navbar-right .nav-link {
+    font-size: 1rem;
+  }
+
+  .navbar-brand h1 {
+    font-size: 1.5rem;
+  }
+}

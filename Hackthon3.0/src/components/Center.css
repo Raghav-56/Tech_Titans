@@ -1,0 +1,70 @@
+/* Center Section Covering Full Screen Below Navbar */
+.center-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Full screen minus navbar height */
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    text-align: center;
+    /* position: relative; */
+    width: 100%;
+    padding: 0 20px;
+    /* margin-top: 70px; Offset to account for the navbar */
+  }
+  
+  .center-title {
+    font-size: 4rem; /* Large title size */
+    color: #ff7600; /* Vibrant orange */
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: fadeIn 2s ease-out forwards;
+    opacity: 0; /* Start hidden */
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px); /* Slight slide-up effect */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Normal position */
+    }
+  }
+  
+  /* Upload Box Below the Title */
+  .upload-section {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0; 
+    text-align: center;
+  }
+  
+  /* Upload Section Styling */
+  .upload-section h2 {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  
+  .upload-section input[type="file"] {
+    margin-top: 10px;
+  }
+  
+  .upload-section button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff7600;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-section button:hover {
+    background-color: #ffd700; /* Golden hover effect */
+  }
+  

@@ -1,0 +1,48 @@
+.footer {
+    background-color: #333; /* Dark background color */
+    color: white;           /* White text color */
+    padding: 20px 0;       /* Padding for top and bottom */
+    text-align: center;     /* Center align text */
+    position: relative;     /* Allows for bottom positioning */
+    bottom: 0;
+    width: 100%;            /* Full width */
+  }
+  
+  .footer-content {
+    max-width: 1200px;      /* Max width for content */
+    margin: 0 auto;         /* Center the content */
+    display: flex;           /* Flex layout */
+    flex-direction: column;  /* Stack items vertically */
+    align-items: center;     /* Center align items */
+  }
+  
+  .footer p {
+    margin: 0;               /* Remove margin */
+    font-size: 1rem;         /* Font size */
+  }
+  
+  .footer-links {
+    margin-top: 10px;        /* Space between text and links */
+  }
+  
+  .footer-link {
+    color: #00aaff;          /* Link color */
+    text-decoration: none;   /* Remove underline */
+    margin: 0 10px;         /* Margin between links */
+    font-size: 1rem;         /* Font size for links */
+  }
+  
+  .footer-link:hover {
+    color: #ff007f;          /* Color change on hover */
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      padding: 15px 0;       /* Adjust padding for mobile */
+    }
+  
+    .footer-link {
+      font-size: 0.9rem;     /* Adjust link size for mobile */
+    }
+  }
+  
